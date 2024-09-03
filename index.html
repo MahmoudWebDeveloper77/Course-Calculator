@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Calculator</title>
+    <style>
+      * {
+        text-align: center;
+        font-family: sans-serif;
+        font-weight: bold;
+      }
+
+      body {
+        background-color: #394461;
+      }
+
+      input {
+        display: block;
+        background-color: #eae3db;
+        margin: 5px;
+        border-radius: 5px;
+        width: 90%;
+        font-size: 20px;
+      }
+
+      button {
+        background-color: #d13f30;
+        color: #fdfefe;
+        border-radius: 5px;
+        font-size: 15px;
+        text-align: center;
+      }
+
+      .user-input {
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 17px;
+      }
+
+      .container {
+        background-color: #252d44;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .result {
+        background-color: #181f32;
+        color: #fdfefe;
+        padding: 5px;
+        text-align: right;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 30px;
+      }
+      .calc {
+        width: 50vw;
+        margin: auto;
+      }
+      .get-back-btn{
+        margin-top: 10px;
+        width: 90%;
+        margin-left: 10px;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="calc">
+      <h3 id="result" class="result">0</h3>
+      <div class="container">
+        <div class="user-input">
+          <input type="text" placeholder="0" id="num1" />
+          <input type="text" placeholder="0" id="num2" />
+          <button onclick="displayAgain()" class="get-back-btn" id="get-back-btn">Reveal agian</button>
+        </div>
+        <div class="buttons">
+          <button onclick="Add()">Add</button>
+          <button onclick="Subtract()">Subtract</button>
+          <button onclick="Multiply()">Multiply</button>
+          <button onclick="divide()">Divide</button>
+          <button onclick="squareRoot()">Square</button>
+          <button onclick="power()">Power</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const result = document.getElementById("result");
+      function Add() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        result.innerHTML = num1 + num2;
+      }
+      function Subtract() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        result.innerHTML = num1 - num2;
+      }
+      function Multiply() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        result.innerHTML = num1 * num2;
+      }
+      function divide() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        result.innerHTML = num1 / num2;
+      }
+      function squareRoot() {
+        document.getElementById("num2").style.display = "none";
+        document.getElementById("get-back-btn").style.display = "block";
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        result.innerHTML = Math.sqrt(num1);
+      }
+      function power() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        result.innerHTML = Math.pow(num1, num2);
+      }
+      function displayAgain() {
+        document.getElementById("get-back-btn").style.display = "none";
+        document.getElementById("num2").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
